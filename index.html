@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Especial 💌</title>
+    <style>
+    body {
+      margin: 0;
+      background: #fce4ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    .envelope {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background: #e91e63;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      perspective: 1000px;
+      transition: transform 0.5s ease;
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: #c2185b;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top;
+      transition: transform 0.6s ease;
+      z-index: 2;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .letter {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      width: 260px;
+      height: 160px;
+      background: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: all 0.8s ease;
+      z-index: 1;
+      overflow-y: auto; /* 🔹 Scroll vertical */
+      scrollbar-width: thin; /* 🔹 Scroll fino (Firefox) */
+      scrollbar-color: #e91e63 #f8bbd0;
+    }
+
+    /* 🔹 Scroll personalizado para Chrome/Edge */
+    .letter::-webkit-scrollbar {
+      width: 6px;
+    }
+    .letter::-webkit-scrollbar-track {
+      background: #f8bbd0;
+      border-radius: 10px;
+    }
+    .letter::-webkit-scrollbar-thumb {
+      background: #e91e63;
+      border-radius: 10px;
+    }
+
+    .envelope.open .letter {
+      transform: translateX(-50%) translateY(-40px);
+      opacity: 1;
+    }
+
+    .letter h2 {
+      margin-top: 0;
+      color: #e91e63;
+      text-align: center;
+    }
+
+    .letter p {
+      text-align: justify;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: #e91e63;
+      animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 30px;
+      font-size: 14px;
+      color: #880e4f;
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+  </head>
+  <body>
+
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+
+      <div class="letter">
+        <h2>💌 Para ti mi juli </h2>
+        <p>
+          <!-- 📝 AQUÍ ESCRIBE TU MENSAJE PERSONAL -->
+          Hola juli, Hoy quiero decirte algo muy especial... 🌹
+
+          Desde que llegaste a mi vida, todo ha sido más bonito.
+          No hay día que no piense en ti, ni momento en el que no
+          sonría al recordarte.
+          Esta carta está escrita con el corazón, para agradecerte por
+          ser tú,
+          por tu paciencia, tu cariño, y por hacerme sentir tan
+          afortunado y darme esa paz.
+
+          Gracias por cada sonrisa, por cada palabra amable, por cada
+          instante.
+          Eres una persona maravillosa, y quería que lo supieras de
+          una forma diferente y pues fue lo que estudie.
+
+          Con mucho cariño,
+          💖 Tu jacob💖
+        </p>
+
+        <script>
+    const envelope = document.getElementById('envelope');
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('open');
+    });
+  </script>
+
+      </body>
+    </html>
