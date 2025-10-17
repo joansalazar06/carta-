@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta animada con video 💌</title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffb6c1, #ffc3a0);
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    .carta {
+      width: 320px;
+      height: 220px;
+      perspective: 1000px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cara {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      transition: transform 0.8s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      background: white;
+    }
+
+    .frente {
+      background: #fff;
+      flex-direction: column;
+    }
+
+    .frente h2 {
+      font-size: 1.3rem;
+      color: #ff4e88;
+    }
+
+    .atras {
+      background: #fffaf5;
+      transform: rotateY(180deg);
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .carta.abierta .frente {
+      transform: rotateY(180deg);
+    }
+
+    .carta.abierta .atras {
+      transform: rotateY(360deg);
+    }
+
+    .contenido {
+      max-height: 400px;
+    }
+
+    .contenido h2 {
+      color: #ff4e88;
+    }
+
+    .contenido p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Scroll suave dentro de la carta */
+    .atras::-webkit-scrollbar {
+      width: 6px;
+    }
+    .atras::-webkit-scrollbar-thumb {
+      background: #ff4e88;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carta" id="carta">
+    <div class="cara frente">
+      <h2>💌 Haz clic para abrir la carta</h2>
+    </div>
+
+    <div class="cara atras">
+      <div class="contenido">
+        <h2>Para ti 💖</h2>
+        <p>
+          Hola amor, hice esta carta con todo mi cariño 💕  
+          Espero que te guste y te saque una sonrisa.  
+          Reproduce el video para ver mi mensaje especial para ti 🎥
+        </p>
+
+        <!-- 🎬 Aquí va tu video -->
+        <video controls poster="portada.jpg">
+          <source src="video_juli.mp4" type="video/mp4" />
+          Tu navegador no soporta el video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const carta = document.getElementById("carta");
+    carta.addEventListener("click", () => {
+      carta.classList.toggle("abierta");
+    });
+  </script>
+</body>
+</html>
